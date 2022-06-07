@@ -1,0 +1,339 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
+
+:root {
+  font-size: 15px;
+  --primaryColor: steelblue;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --coolWhite: rgb(231, 226, 221);
+  --gold: rgb(180, 159, 38);
+  --mainSpacing: 0.1rem;
+  --mainTransition: all 0.3s linear;
+  --border: 1px solid black;
+  --titillium: "Titillium Web", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: var(--mainBlack);
+  background: var(--mainWhite);
+  font-family: var(--titillium);
+}
+.border {
+  border:1px solid black;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
+button {
+  cursor: pointer;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  height: 65px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--coolWhite);
+  z-index: 1;
+}
+.navbar-center {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 1.5rem;
+}
+
+.navbar-center:nth-child(1),
+.navbar-center:nth-child(3) {
+  margin: 0 1rem;
+}
+
+.nav-icon {font-size: 1.5rem;}
+.cart-btn {position: relative; cursor: pointer;}
+
+.cart-items {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--primaryColor);
+  padding: 0 5px;
+  border-radius: 30%;
+  color: var(--mainWhite);
+  font: normal 600 .9rem / 1.2rem var(--titillium);
+}
+/* --------------- End of Navbar ---------------- */
+/* --------------- Hero ---------------- */
+.hero {
+  min-height: calc(100vh - 65px);
+  background: url("./images/room1.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.6);
+  /* display: inline-block; */
+  padding: 2.5rem;
+  border-radius: 4px;
+}
+.banner-title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 2rem;
+}
+
+.banner-btn {
+  padding: .6rem 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  font: normal 600 1rem / 1.5rem var(--titillium);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--mainBlack);
+  border: 1px solid var(--primaryColor);
+  transition: var(--mainTransition);
+}
+.banner-btn:hover {
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+}
+/* --------------- End of Hero ---------------- */
+
+/* --------------- Products ---------------- */
+.products {
+  padding: 4rem 0;
+}
+.section-title h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 4rem;
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+}
+.products-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 80rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 2rem 1.5rem;
+}
+ .img-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-img {
+  display: block;
+  height: 14rem;
+  transition: var(--mainTransition);
+}
+.img-container:hover .product-img {
+  opacity: 0.6;
+}
+.product h3 {
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  letter-spacing: var(--mainSpacing);
+  text-align: center;
+}
+
+.product h4 {
+  margin: 0.8rem auto 0;
+  letter-spacing: var(--mainSpacing);
+  color: var(--gold);
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 5rem;
+} 
+
+.bag-btn {
+  position: absolute;
+  top: 70%;
+  right: 0;
+  background: var(--primaryColor);
+  border: none;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  font-weight: bold;
+  transition: var(--mainTransition);
+  transform: translateX(101%);
+  border-radius: 8px 0  0 0;
+}
+.bag-btn:hover {
+  color: var(--mainWhite);
+}
+.fa-shopping-cart {
+  margin-right: 0.3rem;
+}
+.img-container:hover .bag-btn {
+  transform: translateX(0);
+}
+
+/* ---------------End of Products ---------------- */
+
+/* --------------- Cart ---------------- */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: var(--mainTransition);
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  visibility: hidden;
+}
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  z-index: 3;
+  background: var(--coolWhite);
+  padding: 1.5rem;
+  transition: var(--mainTransition);
+  transform: translateX(100%);
+}
+ .showCart {
+  transform: translateX(0);
+}
+.showOverlay {
+  visibility: visible;
+}
+@media screen and (min-width: 768px) {
+  .cart {
+    width: 45vw;
+    max-width: 400px;
+  }
+}
+
+.close-cart {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.cart h2 {
+  text-transform: capitalize;
+  text-align: center;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 2.5rem;
+}
+/*---------- Cart Item -------------------- */
+.cart-item {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
+  grid-column-gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.cart-item img {
+  width: 75px;
+  height: 75px;
+  border-radius: 10px;
+}
+.cart-item h4 {
+  font: normal 800 0.9rem / 1.5rem var(--titillium);
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+  color: var(--primaryColor);
+}
+.cart-item h5 {
+  margin: 0.6rem 0;
+  letter-spacing: var(--mainSpacing);
+  color: var(--gold);
+  font: normal 600 1.3rem / 1.5rem var(--titillium);
+}
+.item-amount {text-align: center;}
+
+.remove-item {
+  color: grey;
+  cursor: pointer;
+}
+.fa-chevron-up,
+.fa-chevron-down {
+  color: var(--primaryColor);
+  cursor: pointer;
+}
+/*---------- End of Cart Item -------------------- */
+
+.cart-footer {
+  margin-top: 2rem;
+  letter-spacing: var(--mainSpacing);
+  text-align: center;
+}
+.cart-footer h3 {
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.cart-footer h3 span {
+  color: var(--gold);
+}
+
+.cart-footer button {
+  padding: .6rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  font: normal 600 1rem / 1.5rem var(--titillium);
+  border-radius: 4px;
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+  border:none;
+  transition: var(--mainTransition);
+  margin: .5rem 0;
+}
+
+.cart-footer button:hover {
+  background-color: transparent;
+  border: 1px solid var(--primaryColor);
+  color: var(--mainBlack);
+}
+
+/* --------------- End of Cart ---------------- */
+
+@media screen and (max-width: 450px) {
+  :root {
+    font-size: 14px;
+  }
+  .nav-icon {font-size: 1.2rem;}
+  .brand-img {width: 12rem}
+
+  .banner {
+    margin: 0 .5rem;
+    padding: 1.4rem;
+  }
+  .banner-title {
+    font-size: 1.5rem;
+  }
+  .banner-btn {
+    padding: .4rem .8rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  :root {
+    font-size: 12px;
+  }
+}
